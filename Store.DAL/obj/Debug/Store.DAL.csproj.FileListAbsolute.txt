@@ -10,3 +10,17 @@ D:\repos\Store\Store.DAL\obj\Debug\Store.DAL.csproj.CoreCompileInputs.cache
 D:\repos\Store\Store.DAL\obj\Debug\Store.DAL.csproj.CopyComplete
 D:\repos\Store\Store.DAL\obj\Debug\Store.DAL.dll
 D:\repos\Store\Store.DAL\obj\Debug\Store.DAL.pdb
+C:\Users\User\source\repos\IdentityStore\Store.DAL\bin\Debug\Store.DAL.dll.config
+C:\Users\User\source\repos\IdentityStore\Store.DAL\bin\Debug\Store.DAL.dll
+C:\Users\User\source\repos\IdentityStore\Store.DAL\bin\Debug\Store.DAL.pdb
+C:\Users\User\source\repos\IdentityStore\Store.DAL\bin\Debug\EntityFramework.dll
+C:\Users\User\source\repos\IdentityStore\Store.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\source\repos\IdentityStore\Store.DAL\bin\Debug\EntityFramework.xml
+C:\Users\User\source\repos\IdentityStore\Store.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\source\repos\IdentityStore\Store.DAL\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\User\source\repos\IdentityStore\Store.DAL\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\User\source\repos\IdentityStore\Store.DAL\obj\Debug\Store.DAL.csprojAssemblyReference.cache
+C:\Users\User\source\repos\IdentityStore\Store.DAL\obj\Debug\Store.DAL.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\IdentityStore\Store.DAL\obj\Debug\Store.DAL.csproj.CopyComplete
+C:\Users\User\source\repos\IdentityStore\Store.DAL\obj\Debug\Store.DAL.dll
+C:\Users\User\source\repos\IdentityStore\Store.DAL\obj\Debug\Store.DAL.pdb

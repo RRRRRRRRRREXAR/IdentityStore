@@ -135,3 +135,6 @@ C:\Users\User\source\repos\IdentityStore\IdentityStore\bin\PagedList.Mvc.xml
 C:\Users\User\source\repos\IdentityStore\IdentityStore\bin\Store.DAL.pdb
 C:\Users\User\source\repos\IdentityStore\IdentityStore\bin\Store.DAL.dll.config
 C:\Users\User\source\repos\IdentityStore\IdentityStore\bin\log4net.xml
+C:\Users\User\source\repos\IdentityStore\IdentityStore\bin\SendGrid.dll
+C:\Users\User\source\repos\IdentityStore\IdentityStore\bin\SendGrid.pdb
+C:\Users\User\source\repos\IdentityStore\IdentityStore\bin\SendGrid.xml

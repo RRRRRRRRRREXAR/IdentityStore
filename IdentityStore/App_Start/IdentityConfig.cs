@@ -12,15 +12,36 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using IdentityStore.Models;
 
+using System.Net;
+using System.Configuration;
+using System.Net.Mail;
+
 namespace IdentityStore
 {
     public class EmailService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Подключите здесь службу электронной почты для отправки сообщения электронной почты.
-            return Task.FromResult(0);
+            MailAddress from = new MailAddress("eventmanagerkbip@gmail.com", "Tom");
+            MailAddress to = new MailAddress(message.Destination);
+            MailMessage m = new MailMessage(from, to);
+            m.Subject = message.Subject;
+            m.Body = message.Body;
+            m.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            smtp.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["mailAccount"], ConfigurationManager.AppSettings["mailPassword"]);
+            smtp.EnableSsl = true;
+            if (smtp!=null)
+            {
+                return smtp.SendMailAsync(m);
+            }
+            else
+            {
+                return Task.FromResult(0);
+            }
+           
         }
+
     }
 
     public class SmsService : IIdentityMessageService
@@ -81,8 +102,11 @@ namespace IdentityStore
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = 
-                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                manager.UserTokenProvider =
+                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"))
+                    {
+                        TokenLifespan = TimeSpan.FromHours(2)
+                    };
             }
             return manager;
         }

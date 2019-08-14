@@ -1,6 +1,7 @@
 ﻿using Store.BLL.DTO;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -21,7 +22,7 @@ namespace Store.BLL.Infrastructure
             m.Body = string.Format(@"{0},{1},{2},{3}", user.FirstName,user.LastName,order.Products,order.Id);
             m.IsBodyHtml = true;
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            smtp.Credentials = new NetworkCredential("eventmanagerkbip@gmail.com", "XBmaj7TNP8QNjzE");
+            smtp.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["mailAccount"], ConfigurationManager.AppSettings["mailPassword"]);
             smtp.EnableSsl = true;
             
 
