@@ -63,12 +63,9 @@ namespace Store.BLL.Services
         {
             List<ProductDTO> products = new List<ProductDTO>();
             var pr = uow.Products.GetAll();
-            var tempCategory = new ProductCategoryDTO();
             foreach (var s in pr)
             {
-                tempCategory.Id = uow.Categories.Get(s.CategoryId).Id;
-                tempCategory.Name = uow.Categories.Get(s.CategoryId).Name;
-                products.Add(new ProductDTO { Id = s.Id, Category = tempCategory, Description = s.Description, Name = s.Name, Price = s.Price });
+                products.Add(new ProductDTO { Id = s.Id, Category = new ProductCategoryDTO { Id = uow.Categories.Get(s.CategoryId).Id, Name = uow.Categories.Get(s.CategoryId).Name }, Description = s.Description, Name = s.Name, Price = s.Price });
             }
 
             return products;
