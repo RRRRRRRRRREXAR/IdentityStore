@@ -1,0 +1,60 @@
+﻿@model PagedList.IPagedList<IdentityStore.Models.ProductViewModel>
+@using IdentityStore.Models;
+    @using PagedList.Mvc;
+    @{
+        ViewBag.Title = "Index";
+    }
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    <script>
+        function AddToCart(id) {
+            $.ajax({
+                url: '/Home/AddToCart/' + id
+            }
+            )
+        };
+
+    </script>
+    <table class="table" style="margin-top:20px">
+        <tr>
+            <th>
+                <p>Price</p>
+            </th>
+            <th>
+                <p>Name</p>
+            </th>
+            <th>
+               <p>Description</p>
+            </th>
+            <th>
+                <p>Category</p>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+    {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    <input type="button" id="AddToCart" onclick="AddToCart(@item.Id)" value="Add to cart" />
+                </td>
+            </tr>
+    }
+
+    </table>
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+  
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

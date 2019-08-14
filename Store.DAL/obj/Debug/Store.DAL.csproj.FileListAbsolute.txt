@@ -1,0 +1,12 @@
+D:\repos\Store\Store.DAL\bin\Debug\Store.DAL.dll.config
+D:\repos\Store\Store.DAL\bin\Debug\Store.DAL.dll
+D:\repos\Store\Store.DAL\bin\Debug\Store.DAL.pdb
+D:\repos\Store\Store.DAL\bin\Debug\EntityFramework.dll
+D:\repos\Store\Store.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\repos\Store\Store.DAL\bin\Debug\EntityFramework.xml
+D:\repos\Store\Store.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\repos\Store\Store.DAL\obj\Debug\Store.DAL.csprojAssemblyReference.cache
+D:\repos\Store\Store.DAL\obj\Debug\Store.DAL.csproj.CoreCompileInputs.cache
+D:\repos\Store\Store.DAL\obj\Debug\Store.DAL.csproj.CopyComplete
+D:\repos\Store\Store.DAL\obj\Debug\Store.DAL.dll
+D:\repos\Store\Store.DAL\obj\Debug\Store.DAL.pdb

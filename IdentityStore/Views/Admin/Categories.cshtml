@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<IdentityStore.Models.CategoryViewModel>
+@using IdentityStore.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<table class="table" style="margin-top:20px">
+    <tr>
+        <th>
+            <p>Price</p>
+        </th>
+        <th>
+            <p>Name</p>
+        </th>
+        <th>
+            <p>Description</p>
+        </th>
+        <th>
+            <p>Category</p>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Change", "ChangeCategory", new { id = item.Id }, new { @class = "btn btn-secondary" })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteCategory", new { id = item.Id }, new { @class = "btn btn-secondary" })
+
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
