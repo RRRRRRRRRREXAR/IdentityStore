@@ -31,7 +31,7 @@ namespace IdentityStore.Controllers
             {
                 viewModels.Add(new ProductViewModel { Id = e.Id, Category = new CategoryViewModel { Id = e.Category.Id, Name = e.Category.Name }, Description = e.Description, Name = e.Name, Price = e.Price });
             }
-            int pageSize = 4;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(viewModels.ToPagedList(pageNumber, pageSize));
         }
@@ -57,6 +57,7 @@ namespace IdentityStore.Controllers
         {
           var cart = Session["cart"] as List<ProductViewModel>;
             OrderViewModel order = new OrderViewModel();
+            order.Products = new List<ProductViewModel>();
             order.Products = cart;
             return View(order);
         }
@@ -65,8 +66,28 @@ namespace IdentityStore.Controllers
         public ActionResult Checkout(OrderViewModel order)
         {
             ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-            service.MakeOrder(new Store.BLL.DTO.UserDTO {  FirstName = user.UserName },new Store.BLL.DTO.OrderDTO { });
+            var products = Session["Cart"] as List<ProductViewModel>;
+            List<ProductDTO> dtoPro = new List<ProductDTO>();
+            foreach (var e in products)
+            {
+                dtoPro.Add(new ProductDTO { Id=e.Id, Category= new ProductCategoryDTO {Id=e.Id, Name=e.Name }, Description=e.Description, Name=e.Name, Price=e.Price });
+            }
+            service.MakeOrder(new Store.BLL.DTO.UserDTO {  FirstName = user.UserName, Email= user.Email },new Store.BLL.DTO.OrderDTO {ShippingAdress=order.ShippingAdress, UserId= user.Id, Products=dtoPro });
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult DeleteFromCart(int? id)
+        {
+            var cart = Session["cart"] as List<ProductViewModel>;
+            try
+            { 
+                cart.RemoveAt(id.Value);
+            }
+            catch
+            {
+
+            }
+            return PartialView();
         }
         protected override void Dispose(bool disposing)
         {

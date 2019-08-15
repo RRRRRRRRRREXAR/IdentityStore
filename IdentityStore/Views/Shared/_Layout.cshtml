@@ -53,8 +53,8 @@
         var btn = document.getElementById("myBtn");
 
         // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
+            var span = document.getElementsByClassName("close")[0];
+            
         // When the user clicks on the button, open the modal
         btn.onclick = function () {
             modal.style.display = "block";
@@ -85,21 +85,7 @@
         }
         }
 
-        function LoadCart() {
-            $.ajax({
-                type: "GET",
-                url: '/Home/GetCart',
-                success: function (data) {
-                    $('#myModalContent').html(data);
-                    $('#myModal').modal(options);
-                    $('#myModal').modal('show');
-
-                },
-                error: function () {
-                    alert("Dynamic content load failed.");
-                }
-            });
-        }
+        
     </script>
 </head>
 <body>

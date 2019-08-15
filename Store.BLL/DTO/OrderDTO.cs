@@ -9,7 +9,7 @@ namespace Store.BLL.DTO
     public class OrderDTO
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public ICollection<ProductDTO> Products { get; set; }
         public string ShippingAdress { get; set; }
     }

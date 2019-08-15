@@ -23,15 +23,18 @@ namespace Store.DAL.Context
         {
 
         }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>().ToTable("Order");
+        }
     }
 
     public class StoreDbInitializer:DropCreateDatabaseIfModelChanges<StoreContext>
     {
         protected override void Seed(StoreContext context)
         {
-            context.Roles.Add(new UserRoles { Name="Admin" });
-            context.Roles.Add(new UserRoles { Name = "User" });
-            context.Users.Add(new User { FirstName = "Adminov", Email = "admin", Password = "admin", UserRole = new UserRoles {Name="Admin" } });
+
+
             context.Categories.Add(new ProductCategories {Name="test" });
             context.Products.Add(new Product { Description="test", CategoryId=1, Name="Test", Price=200});
             context.Products.Add(new Product { Description = "test2", CategoryId = 1, Name = "Test", Price = 200 });

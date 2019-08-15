@@ -75,11 +75,13 @@ namespace Store.BLL.Services
         public void MakeOrder(UserDTO user,OrderDTO order)
         {
             List<Product> prd = new List<Product>();
-            foreach (var el in prd)
+            foreach (var el in order.Products)
             {
-                prd.Add(new Product { Id=el.Id, CategoryId=  el.CategoryId, Description=el.Description, Name=el.Name, Price=el.Price });
+                prd.Add(new Product { Id=el.Id, CategoryId=  el.Category.Id, Description=el.Description, Name=el.Name, Price=el.Price });
             }
-            uow.Orders.Create(new Order { Products=prd, ShippingAdress=order.ShippingAdress, UserId=order.UserId});
+            Order ord = new Order { Products = new List<Product>(), ShippingAdress = order.ShippingAdress, UserId = order.UserId };
+            ord.Products = prd;
+            uow.Orders.Create(ord);
             Emailer em = new Emailer();
             em.SentOrder(user,order);
 

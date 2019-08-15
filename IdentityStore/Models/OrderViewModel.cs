@@ -8,7 +8,7 @@ namespace IdentityStore.Models
     public class OrderViewModel
     {
         public int Id { get; set; }
-        public ICollection<ProductViewModel> Products { get; set; }
+        public List<ProductViewModel> Products { get; set; }
         public string ShippingAdress { get; set; }
     }
 }
