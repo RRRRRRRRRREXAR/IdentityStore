@@ -4,18 +4,19 @@
     ViewBag.Title = "GetCart";
 }
     <script>
-        function DeleteFromCart(id) {
+        function UpdateCart() {
             $.ajax({
-                url: '/Home/DeleteFromCart/' + id,
-                success: function () {
-                    $.ajax({
                         type: "GET",
                         url: "/Home/GetCart",
                         success: function (data) {
                             $('#myModalContent').html(data);
                         }
                     })
-                }
+        }
+        function DeleteFromCart(id) {
+            $.ajax({
+                url: '/Home/DeleteFromCart/' + id,
+                success: UpdateCart()
             }
             )
         };
