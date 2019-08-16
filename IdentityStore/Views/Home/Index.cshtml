@@ -13,11 +13,11 @@
             )
         };
 
-    </script>
-<div class="container" id="targetElement">
+       
 
-</div>
-    <table class="table" id="targetElement" style="margin-top:20px">
+    </script>
+
+    <table class="table" id="targetElement"  style="margin-top:20px">
         <tr>
             <th>
                 <p>Price</p>
@@ -60,8 +60,4 @@
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
   
     @Html.PagedListPager(Model, page =>  Url.Action("Index",
-        new { page= page }),PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
-        {
-            HttpMethod = "GET",
-            UpdateTargetId = "targetElement"
-        }))
+        new { page= page }))

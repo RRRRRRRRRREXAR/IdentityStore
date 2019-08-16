@@ -33,19 +33,7 @@ namespace IdentityStore.Controllers
             int pageNumber = (page ?? 1);
             return View(viewModels.ToPagedList(pageNumber, pageSize));
         }
-        [HttpGet]
-        public ActionResult Products(int? page)
-        {
-            var pr = service.GetAllProducts();
-            List<ProductViewModel> viewModels = new List<ProductViewModel>();
-            foreach (var e in pr)
-            {
-                viewModels.Add(new ProductViewModel { Id = e.Id, Category = new CategoryViewModel { Id = e.Category.Id, Name = e.Category.Name }, Description = e.Description, Name = e.Name, Price = e.Price });
-            }
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-            return PartialView(viewModels.ToPagedList(pageNumber, pageSize));
-        }
+        
         [HttpGet]
         public ActionResult AddToCart(int? id)
         {
